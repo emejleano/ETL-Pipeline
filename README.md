@@ -148,8 +148,5 @@ Setiap fungsi utama dilengkapi dengan error handling:
 - Pastikan semua dependencies terinstall
 - Jalankan `pip install -r requirements.txt` lagi
 
-## Lisensi
-Project ini dibuat untuk submission Dicoding - Kelas Data Engineering
-
 ## Author
-Submission untuk Kelas Data Engineering - Dicoding Indonesia
+Emejleano Rusmin Nggepo

@@ -113,5 +113,4 @@ Jika mengalami error:
 1. Pastikan semua dependencies terinstall: pip install -r requirements.txt
 2. Pastikan koneksi internet stabil untuk scraping
 3. Untuk Google Sheets error, cek kredensial file JSON
-4. Untuk PostgreSQL error, cek connection string dan database
-5. Jalankan unit test untuk memastikan semua fungsi berjalan: pytest tests/
+4. Jalankan unit test untuk memastikan semua fungsi berjalan: pytest tests/
