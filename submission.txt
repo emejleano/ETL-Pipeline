@@ -1,0 +1,117 @@
+# ============================================================
+# CARA MENJALANKAN PROYEK ETL PIPELINE
+# ============================================================
+
+## PERSIAPAN
+
+1. Install Python 3.8 atau lebih tinggi
+2. Install dependencies:
+   pip install -r requirements.txt
+
+## MENJALANKAN ETL PIPELINE
+
+# Jalankan script utama
+python main.py
+
+Catatan:
+- Secara default, data akan disimpan ke CSV (products.csv) dan Google Sheets
+- File google-sheets-api.json sudah tersedia
+- Spreadsheet akan otomatis dibuat dengan permission "Anyone with the link" sebagai Editor
+- PostgreSQL tidak digunakan dalam proyek ini
+
+## MENJALANKAN UNIT TEST
+
+# Menjalankan semua unit test
+pytest tests/
+
+# Menjalankan test spesifik
+pytest tests/test_extract.py
+pytest tests/test_transform.py
+pytest tests/test_load.py
+
+# Menjalankan test dengan verbose output
+pytest tests/ -v
+
+## MENJALANKAN TEST COVERAGE
+
+# Install pytest-cov (sudah ada di requirements.txt)
+pip install pytest-cov
+
+# Jalankan test coverage untuk folder tests
+pytest tests/ --cov=utils --cov-report=term-missing
+
+# Atau menggunakan coverage run
+coverage run -m pytest tests/
+coverage report
+coverage html
+
+# Untuk melihat report HTML
+# Buka file htmlcov/index.html di browser
+
+## INFORMASI REPOSITORI DATA
+
+### CSV
+File output: products.csv
+Lokasi: Di root folder proyek
+
+### Google Sheets
+URL akan ditampilkan di console setelah ETL selesai
+Atau lihat di bagian bawah file ini
+
+
+## URL GOOGLE SHEETS
+# URL akan ditampilkan di console setelah menjalankan ETL
+# Spreadsheet akan otomatis dibuat dengan permission "Anyone with the link" sebagai Editor
+# Salin URL dari output console dan paste di sini setelah ETL selesai
+
+URL Google Sheets: https://docs.google.com/spreadsheets/d/19_1wpy7ZUWtQWd9fJj9xsqTUScHEezpffWqMAvlst4A/edit?usp=sharing
+
+## CATATAN PENTING
+
+1. Proses scraping membutuhkan waktu sekitar 25-30 detik (50 halaman)
+2. Pastikan koneksi internet stabil
+3. Data hasil scraping akan dikurangi setelah proses cleaning (menghapus duplikat, null, dan invalid data)
+4. Untuk Google Sheets:
+   - File google-sheets-api.json sudah ada di root folder
+   - Service account harus memiliki akses Google Sheets API dan Google Drive API
+   - Spreadsheet otomatis dibuat dengan permission "Anyone with the link" sebagai Editor
+   - URL Google Sheets akan ditampilkan di console setelah ETL selesai
+
+## STRUKTUR PROYEK
+
+submission-pemda/
+├── tests/
+│   ├── __init__.py
+│   ├── test_extract.py
+│   ├── test_transform.py
+│   └── test_load.py
+├── utils/
+│   ├── __init__.py
+│   ├── extract.py
+│   ├── transform.py
+│   └── load.py
+├── main.py
+├── requirements.txt
+├── submission.txt
+├── products.csv (akan dibuat setelah ETL berjalan)
+└── google-sheets-api.json (opsional, untuk Google Sheets)
+
+## EKSPEKTASI HASIL
+
+Setelah ETL berjalan, Anda akan mendapatkan:
+1. File products.csv dengan ~700-900 baris data (tergantung data yang tersedia)
+2. Data yang bersih tanpa duplikat, null, atau invalid data
+3. Kolom Price dalam Rupiah (Rp16.000 per USD)
+4. Kolom Rating dalam format float
+5. Kolom Colors dalam format integer
+6. Kolom Size dan Gender tanpa prefix
+7. Kolom timestamp menunjukkan waktu ekstraksi
+
+## TROUBLESHOOTING
+
+Jika mengalami error:
+1. Pastikan semua dependencies terinstall: pip install -r requirements.txt
+2. Pastikan koneksi internet stabil untuk scraping
+3. Untuk Google Sheets error, cek kredensial file JSON
+4. Untuk PostgreSQL error, cek connection string dan database
+5. Jalankan unit test untuk memastikan semua fungsi berjalan: pytest tests/
