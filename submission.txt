@@ -64,7 +64,7 @@ Atau lihat di bagian bawah file ini
 # Spreadsheet akan otomatis dibuat dengan permission "Anyone with the link" sebagai Editor
 # Salin URL dari output console dan paste di sini setelah ETL selesai
 
-URL Google Sheets: https://docs.google.com/spreadsheets/d/19_1wpy7ZUWtQWd9fJj9xsqTUScHEezpffWqMAvlst4A/edit?usp=sharing
+URL Google Sheets: 
 
 ## CATATAN PENTING
 
